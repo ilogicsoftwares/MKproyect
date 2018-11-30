@@ -10,11 +10,11 @@ namespace SignalRChatServer.Hubs
 {
     public class SignalHub:Hub
     {
-       
+       private  IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalHub>();
         
         public  Task JoinMachineChanel (string machineID)
         {
-            return Groups.Add(Context.ConnectionId, machineID);
+            return hubContext.Groups.Add(Context.ConnectionId, machineID);
 
         }
 
